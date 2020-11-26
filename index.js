@@ -1,7 +1,7 @@
 //Discord imports
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-bot.login('NzgwMzAwMDIzNjIzNzEyNzY4.X7tFBg.tTm0XYPnRdhsM5upla4hOvob2lQ');
+bot.login('');
 
 //fs imports
 const fs = require('fs');
