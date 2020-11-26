@@ -69,7 +69,7 @@ bot.on("message", function (msg) {
             if (err) {
                 return console.error(err);
             }}).toString();
-        fs.writeFile('photocopier/data.txt', data + String((Photocopier.code-1) + " " + msg.url + "\n"), function(err) {
+        fs.writeFile('photocopier/data.txt', data + "\n" + String((Photocopier.code-1) + " " + msg.url), function(err) {
             if (err) {
                 return console.error(err);
             }});
@@ -80,14 +80,14 @@ bot.on("message", function (msg) {
             if (err) {
                 return console.error(err);
             }}).toString();
+        let newDay = false;
         for(let i = 0; i < Photocopier.messages.length; i++) {
-            let newDay = false;
             if(Math.floor(Photocopier.code/Math.pow(10, 3)) > Math.floor(Photocopier.messages[i][0]/Math.pow(10, 3)) && Math.floor(Photocopier.messages[i][0]/Math.pow(10, 3)) > Math.pow(10, 7)) {
                 newDay = true;
             }
         }
         if(newDay) { data += "\n" + Math.floor(Photocopier.code/Math.pow(10, 3)) + " " + msg.url;}
-        fs.writeFile('photocopier/data.txt', "\n" + data + String((Math.floor(Photocopier.code/Math.pow(10, 2))) + " " + msg.url), function(err) {
+        fs.writeFile('photocopier/data.txt', data + "\n" + String((Math.floor(Photocopier.code/Math.pow(10, 2))) + " " + msg.url), function(err) {
             if (err) {
                 return console.error(err);
             }});
