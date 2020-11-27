@@ -144,7 +144,9 @@ let Photocopier = {
     },
 
     generatePassword: function() {
-        this.password = Math.floor(Math.random() * Math.pow(10, 5));
+        for(let i = 0; i < 4; i++) {
+            this.password = String(Math.floor(Math.random()*10));
+        }
         console.log(this.password);
     },
 
