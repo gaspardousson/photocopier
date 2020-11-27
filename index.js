@@ -129,7 +129,7 @@ let Photocopier = {
     messages: [],
     last: "None",
     user: false,
-    password: "||hx1||",
+    password: "0000",
 
     loadMessages: function() {
         this.messages = [];
