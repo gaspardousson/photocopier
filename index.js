@@ -129,7 +129,7 @@ let Photocopier = {
     messages: [],
     last: "None",
     user: false,
-    password: "0000",
+    password: "",
 
     loadMessages: function() {
         this.messages = [];
@@ -142,6 +142,16 @@ let Photocopier = {
             this.messages.push(data[i].split(" "));
         }
     },
+
+    generatePassword: function() {
+        this.password = Math.floor(Math.random() * Math.pow(10, 5));
+        console.log(this.password);
+    },
+
+    init: function() {
+        this.generatePassword();
+        this.loadMessages();
+    },
 }
 
-Photocopier.loadMessages();
+Photocopier.init();
