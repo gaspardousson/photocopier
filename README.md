@@ -2,13 +2,13 @@
 
 Bot Discord stockant des photos en les référençant avec un code unique. Particulièrement utile pour des cours à distance !
 
-##Configuration
+### Configuration
 
 Le bot enregistre les codes avec les urls des messages associés dans le fichier `data.txt` qui doit donc nécessairement être dans le même dossier que le bot.
 Chaque code est sous la forme `YYYYMMDDSII`, avec `YYYY`l'année du message, `MM` le mois, `DD` le jour, `S` le sujet et `II` un indice unique.
 Il est possible de configurer `s` et `i` avant le lancement, pendant le fonctionnement, le bot incrémente automatiquement l'indice.
 
-##Commandes
+### Commandes
 
 Il existe plusieurs commandes à envoyer dans un salon auquel il a accès pour contrôler le bot pendant son fonctionnement.
 `!take` permet de devenir utilisateur, seule personne dont il traite les photos. Il faut alors donner le mot de passe, à configurer dans le code directement.
@@ -20,7 +20,7 @@ Il existe plusieurs commandes à envoyer dans un salon auquel il a accès pour c
 `!lock` permet de cesser d'être utilisateur. Il est nécessaire de réutiliser `!take` alors.
 Dans les deux derniers cas, les salons configurés ne changent pas. Il n'y a de réinitialisation totale que si le bot est coupé puis relancé.
 
-##Informations
+### Informations
 
 `?user` renvoie le nom de l'utilisateur actuel (_false_ s'il n'y en a pas).
 `?index` renvoie le code de la prochaine photo théorique.
