@@ -11,10 +11,10 @@ bot.on("message", function (msg) {
     if(msg.content === "!take" && !Photocopier.user) {
         msg.channel.send("password?");
         msg.delete();
-        Photocopier.user = true;
+        Photocopier.user = "";
         return null;
     }
-    if(msg.content === Photocopier.password && Photocopier.user) {
+    if(msg.content === Photocopier.password && Photocopier.user === "") {
         Photocopier.user = msg.author.username;
         msg.channel.send("New user: " + Photocopier.user);
         msg.delete();
@@ -48,7 +48,7 @@ bot.on("message", function (msg) {
         }
         if (msg.content === "!switch") {
             msg.channel.send("password?");
-            Photocopier.user = true;
+            Photocopier.user = "";
             msg.delete();
             return null;
         }
@@ -69,7 +69,7 @@ bot.on("message", function (msg) {
             if (err) {
                 return console.error(err);
             }}).toString();
-        fs.writeFile('photocopier/data.txt', data + "\n" + String((Photocopier.code-1) + " " + msg.url), function(err) {
+        fs.writeFile('photocopier/data.txt', data + "\n" + String((d.getFullYear()*Math.pow(10, 7) + (d.getMonth()+1)*Math.pow(10, 5) + d.getDate()*Math.pow(10, 3) + s*Math.pow(10, 2)) + " " + msg.url), function(err) {
             if (err) {
                 return console.error(err);
             }});
@@ -80,14 +80,7 @@ bot.on("message", function (msg) {
             if (err) {
                 return console.error(err);
             }}).toString();
-        let newDay = false;
-        for(let i = 0; i < Photocopier.messages.length; i++) {
-            if(Math.floor(Photocopier.code/Math.pow(10, 3)) > Math.floor(Photocopier.messages[i][0]/Math.pow(10, 3)) && Math.floor(Photocopier.messages[i][0]/Math.pow(10, 3)) > Math.pow(10, 7)) {
-                newDay = true;
-            }
-        }
-        if(newDay) { data += "\n" + Math.floor(Photocopier.code/Math.pow(10, 3)) + " " + msg.url;}
-        fs.writeFile('photocopier/data.txt', data + "\n" + String((Math.floor(Photocopier.code/Math.pow(10, 2))) + " " + msg.url), function(err) {
+        fs.writeFile('photocopier/data.txt', data + "\n" + String((Photocopier.code-1) + " " + msg.url), function(err) {
             if (err) {
                 return console.error(err);
             }});
@@ -108,7 +101,7 @@ bot.on("message", function (msg) {
     if (!isNaN(msg.content)) {
         for (let i = 0; i < Photocopier.messages.length; i++) {
             if (msg.content === Photocopier.messages[i][0]) {
-                msg.channel.send(msg.author.username + ":\n" + Photocopier.messages[i][1]);
+                msg.channel.send("**" + msg.author.username + ":**\n" + Photocopier.messages[i][1]);
                 msg.delete();
                 return null;
             }
@@ -116,7 +109,7 @@ bot.on("message", function (msg) {
     }
 });
 
-d = new Date();
+d = new Date()
 s = 0; //math: 0, ph-c: 1, s2i: 2, ipt: 3, engl: 4, germ: 5, fr-p: 6
 i = 0; //initial index
 
