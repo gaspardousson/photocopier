@@ -69,7 +69,7 @@ bot.on("message", function (msg) {
             if (err) {
                 return console.error(err);
             }}).toString();
-        fs.writeFile('photocopier/data.txt', data + "\n" + String((d.getFullYear()*Math.pow(10, 7) + (d.getMonth()+1)*Math.pow(10, 5) + d.getDate()*Math.pow(10, 3) + s*Math.pow(10, 2)) + " " + msg.url), function(err) {
+        fs.writeFile('photocopier/data.txt', data + "\n" + String(Photocopier.code-1) + " " + msg.url, function(err) {
             if (err) {
                 return console.error(err);
             }});
@@ -80,7 +80,7 @@ bot.on("message", function (msg) {
             if (err) {
                 return console.error(err);
             }}).toString();
-        fs.writeFile('photocopier/data.txt', data + "\n" + String((Photocopier.code-1) + " " + msg.url), function(err) {
+        fs.writeFile('photocopier/data.txt', data + "\n" + String((String((d.getFullYear()*Math.pow(10, 7) + (d.getMonth()+1)*Math.pow(10, 5) + d.getDate()*Math.pow(10, 3) + s*Math.pow(10, 2)) + " " + msg.url)) + " " + msg.url), function(err) {
             if (err) {
                 return console.error(err);
             }});
@@ -111,7 +111,7 @@ bot.on("message", function (msg) {
 
 d = new Date()
 s = 0; //math: 0, ph-c: 1, s2i: 2, ipt: 3, engl: 4, germ: 5, fr-p: 6
-i = 0; //initial index
+i = 1; //initial index
 
 let Photocopier = {
     input: null,
